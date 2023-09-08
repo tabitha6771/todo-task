@@ -1,15 +1,19 @@
-const API_URL = `http://localhost:4000`
+const API_URL = `http://localhost:4000`;
 
 export const updateTodo = async (todo) => {
     
     const response = await fetch(`${API_URL}/todos/items/${todo._id}`, {
-        // what method?
-      
-        // type of content?
-       
-        // body updated the "text" in your model with the text you sent as parameter 
-        
+        method: 'PUT', 
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ text: todo.text })        
     })
-    const json = await response.json()
-    return json
+
+    if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const json = await response.json();
+    return json;
 }

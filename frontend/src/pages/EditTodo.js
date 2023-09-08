@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom"
 import { useState, useEffect } from 'react'
 import { getTodo } from "../api/getTodo"
 import { updateTodo } from "../api/updateTodo"
+
 const EditTodo = () => {
 
     const { id } = useParams()
